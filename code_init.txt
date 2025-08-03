@@ -1,0 +1,64 @@
+# Código inicial (iniciando um projeto) passo a passo
+
+1) Iniciando um git (versionamento):
+No terminal ubuntu linux (shell) escreva:
+> git init
+
+2) criar um .gitingnore
+Shell:
+> touch .gitingnore
+Dentro do .gitingnore, escrever os arquivos a serem ignorados:
+**/__pycache__
+.pytest_cache
+.env
+
+3) Pode faze rum git add .gitingnore e commit -m 'config: Starting project with .gitingnore'
+
+4) Criando um ambiente virtual em python
+python3 -m venv .venv
+
+5) Ativando o ambiente criando 
+source .venv/bin/activate 
+
+OBS: Caso o .venv esteja sendo rastreado pelo versionamento git status remova:
+git rm -r --cached .venv
+git satatus
+
+6) Add modificações do git 
+git add .gitingnore 
+dit commit -m 'config: Adding .venv to .gitingnore'
+
+7) Criando arquivo requirements.txt e passando as dependências para ele:
+.venv/bin/pip freeze > requirements.txt
+
+8) Caso eu queira instalar todas as dependências 
+.venv/bin/pip isntall -r requirements.txt
+
+9) Automatizando a atualização do requirements.txt sempre que um commit for realizado:
+*Instalar um pre-commit:
+pip install pre-commit
+
+*Cri um arquivo chamado .pre-commit-config.yaml
+touch .pre-commit-config.yaml
+
+* Escreva no arquivo criado .pre-commit-config.yaml para que sempre que fizer um commit no git ele atualize o requirements.txt arquivo:
+repos:
+  - repo: local
+    hooks:
+      - id: requirements
+        name: requirements
+        entry: bash -c 'venv/bin/pip freeze > requirements.txt; git add requirements.txt'
+        language: system
+        pass_filenames: false
+        stages: [commit]
+
+*Em seguida suba o script hook criado para automatizar o requerimentos do projeto
+pre-commit migrate-config
+
+10) Pronto agora só add o arquivo .pre-commit-config.yaml no git e commitar:
+git add .pre-commit-config.yaml
+git commit -m 'config: Adding pre-commit to project'
+
+11) Add e comitando esse próprio arquivo:
+gi add code_init.txt
+git commit -m 'config: Add arquivo de orientação para configuração do projeto inicial (git, venv, requirements, automatizando pre-commit, criando db postgresql)'
