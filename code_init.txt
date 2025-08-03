@@ -92,3 +92,18 @@ dbname = os.getenv("DB_NAME")
 DATABASE_URL = f"postgresql://{user}:{password}@{host}:{port}/{dbname}"
 
 engine = create_engine(DATABASE_URL)
+
+13) Tipos de tags para commits (git):
+
+# Tabela das principais tags comuns de Conventional Commits:
+Prefixo   |	  Significado
+----------|-----------------------------------
+feat	    |   Nova funcionalidade
+fix	      |   Correção de bug
+docs	    |   Mudança apenas em documentação
+style	    |   Formatação, espaços, ponto e vírgula, sem alterar lógica
+refactor	|   Refatoração (melhora do código sem alterar comportamento)
+test	    |   Adição ou ajuste de testes
+chore	    |   Mudanças de build ou ferramentas, sem impacto direto
+config    |   Alterações em arquivos de configuração (.pre-commit-config.yaml, .gitignore, pyproject.toml , )setup.cfg, .env.example, docker-compose.yml , config.json, entre outros.
+
