@@ -32,7 +32,7 @@ dit commit -m 'config: Adding .venv to .gitingnore'
 .venv/bin/pip freeze > requirements.txt
 
 8) Caso eu queira instalar todas as dependências 
-.venv/bin/pip isntall -r requirements.txt
+.venv/bin/pip install -r requirements.txt
 
 9) Automatizando a atualização do requirements.txt sempre que um commit for realizado:
 *Instalar um pre-commit:
