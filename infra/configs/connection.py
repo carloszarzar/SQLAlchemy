@@ -4,6 +4,7 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 import os
 
+# (DBConnectionHandler) Manipulador de Conexão de Banco de Dados
 class DBConnectionHandler:
     def __init__(self) -> None:
         self.__connection_string = self.__env_var()
@@ -32,10 +33,10 @@ class DBConnectionHandler:
 
     def __enter__(self):
         print('Iniciando uma Sessão de conexão com o Data Base.')
-        session_maker = sessionmaker(bind=self.__engine)
-        self.session = session_maker()
+        session_maker = sessionmaker(bind=self.__engine) # Criando sessões na conexão do DB
+        self.session = session_maker() # Abre uma sessão da conexão criada
         return self
     
     def __exit__(self, exc_type, exc_val, exc_tb):
         print('Finalizando uma Sessão aberta.')
-        self.session.close()
+        self.session.close() # Fecha uma sessão

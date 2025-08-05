@@ -17,13 +17,11 @@ class UserRepository:
                    nome_login = nome_login)
             db.session.add(data_insert)
             db.session.commit()
-
     # Delete
     def delete(self, nome_login):
         with DBConnectionHandler() as db:
             db.session.query(User).filter(User.nome_login == nome_login).delete()
             db.session.commit()
-        
     # Update
     def update(self, nome_completo, senha):
         with DBConnectionHandler() as db:

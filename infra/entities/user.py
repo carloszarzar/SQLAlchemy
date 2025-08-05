@@ -1,7 +1,7 @@
 from infra.configs.base import Base
 from sqlalchemy import Column, String, Integer
 
-# Entidades
+# Entidades (Tabela no banco de dados que possui atributos)
 class User(Base):
     __tablename__ = "user"
 

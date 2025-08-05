@@ -25,7 +25,7 @@ COMMENT ON DATABASE db_praia IS 'Rascunho para banco de dados do app PRAIA';
 --=======================================================
 
 -- Usuários do sistema
-CREATE TABLE "user" (
+CREATE TABLE IF NOT EXISTS "user" (
     id_user SERIAL PRIMARY KEY,
     nome_completo VARCHAR(100),
     email VARCHAR(100) UNIQUE NOT NULL,
